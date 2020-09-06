@@ -1,0 +1,86 @@
+﻿@model OnlineShoppingStore1.DAL.T_Message
+
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<link rel="stylesheet" href="~/HomeCSS/css/main.css" />
+<link href="~/HomeCSS/slider.css" rel="stylesheet" />
+<script src="~/HomeCSS/js/jquery.min.js"></script>
+<script src="~/HomeCSS/js/jquery.scrolly.min.js"></script>
+<script src="~/HomeCSS/js/jquery.scrollex.min.js"></script>
+<script src="~/HomeCSS/js/skel.min.js"></script>
+<script src="~/HomeCSS/js/util.js"></script>
+<script src="~/HomeCSS/js/main.js"></script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<footer id="footer" class="wrapper">
+        <div class="inner">
+            <section>
+                <div class="box">
+                    <div class="content">
+                        <h2 class="align-center">Get in Touch</h2>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <hr />
+                        <form action="Message" method="post">
+                            <div class="field half first">
+                                <label for="name">Name</label>
+                                <div class="form-group">
+
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field half">
+                                <label for="email">Email</label>
+                               
+                                <div class="form-group">
+
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="field">
+                                <label for="message">Message</label>
+                               
+                                <div class="form-group">
+                                  
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", @placeholder = "Message", @required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="actions align-center">
+                                <li><input value="Send Message" class="button special" type="submit"></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <div class="copyright">
+                &copy; Online Shopping - 2020
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    
+}
+

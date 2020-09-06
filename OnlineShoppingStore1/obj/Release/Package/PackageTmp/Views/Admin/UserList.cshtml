@@ -1,0 +1,66 @@
+﻿@model IEnumerable<OnlineShoppingStore1.DAL.T_Members>
+
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>User List</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+       <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+      
+        <th>
+            Action
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        
+        <td>
+         
+            @Html.ActionLink("Delete", "RemoveUser", new { memberId = item.MemberId })
+        </td>
+    </tr>
+}
+
+</table>

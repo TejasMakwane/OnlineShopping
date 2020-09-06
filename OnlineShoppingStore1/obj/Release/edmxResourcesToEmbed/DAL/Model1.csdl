@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineShoppingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="T_Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="CartStatusId" Type="Int32" />
+    <NavigationProperty Name="T_Product" Relationship="Self.FK__T_Cart__CartStat__5BE2A6F2" FromRole="T_Cart" ToRole="T_Product" />
+  </EntityType>
+  <EntityType Name="T_CartStatus">
+    <Key>
+      <PropertyRef Name="CartStatusId" />
+    </Key>
+    <Property Name="CartStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="T_Product" Relationship="Self.FK__T_Product__Categ__4D94879B" FromRole="T_Category" ToRole="T_Product" />
+  </EntityType>
+  <EntityType Name="T_MemberRole">
+    <Key>
+      <PropertyRef Name="MemberRoleId" />
+    </Key>
+    <Property Name="MemberRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_Members">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="T_ShippingDetails" Relationship="Self.FK__T_Shippin__Payme__5629CD9C" FromRole="T_Members" ToRole="T_ShippingDetails" />
+  </EntityType>
+  <EntityType Name="T_Message">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsFeatured" Type="Boolean" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="T_Cart" Relationship="Self.FK__T_Cart__CartStat__5BE2A6F2" FromRole="T_Product" ToRole="T_Cart" />
+    <NavigationProperty Name="T_Category" Relationship="Self.FK__T_Product__Categ__4D94879B" FromRole="T_Product" ToRole="T_Category" />
+  </EntityType>
+  <EntityType Name="T_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_ShippingDetails">
+    <Key>
+      <PropertyRef Name="ShippingDetailId" />
+    </Key>
+    <Property Name="ShippingDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="Adress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_Members" Relationship="Self.FK__T_Shippin__Payme__5629CD9C" FromRole="T_ShippingDetails" ToRole="T_Members" />
+  </EntityType>
+  <EntityType Name="T_SlideImage">
+    <Key>
+      <PropertyRef Name="SlideId" />
+    </Key>
+    <Property Name="SlideId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SlideTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SlideImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__T_Cart__CartStat__5BE2A6F2">
+    <End Role="T_Product" Type="Self.T_Product" Multiplicity="0..1" />
+    <End Role="T_Cart" Type="Self.T_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="T_Cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_Product__Categ__4D94879B">
+    <End Role="T_Category" Type="Self.T_Category" Multiplicity="0..1" />
+    <End Role="T_Product" Type="Self.T_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="T_Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_Shippin__Payme__5629CD9C">
+    <End Role="T_Members" Type="Self.T_Members" Multiplicity="0..1" />
+    <End Role="T_ShippingDetails" Type="Self.T_ShippingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Members">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="T_ShippingDetails">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineShoppingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_Cart" EntityType="Self.T_Cart" />
+    <EntitySet Name="T_CartStatus" EntityType="Self.T_CartStatus" />
+    <EntitySet Name="T_Category" EntityType="Self.T_Category" />
+    <EntitySet Name="T_MemberRole" EntityType="Self.T_MemberRole" />
+    <EntitySet Name="T_Members" EntityType="Self.T_Members" />
+    <EntitySet Name="T_Message" EntityType="Self.T_Message" />
+    <EntitySet Name="T_Product" EntityType="Self.T_Product" />
+    <EntitySet Name="T_Roles" EntityType="Self.T_Roles" />
+    <EntitySet Name="T_ShippingDetails" EntityType="Self.T_ShippingDetails" />
+    <EntitySet Name="T_SlideImage" EntityType="Self.T_SlideImage" />
+    <AssociationSet Name="FK__T_Cart__CartStat__5BE2A6F2" Association="Self.FK__T_Cart__CartStat__5BE2A6F2">
+      <End Role="T_Product" EntitySet="T_Product" />
+      <End Role="T_Cart" EntitySet="T_Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_Product__Categ__4D94879B" Association="Self.FK__T_Product__Categ__4D94879B">
+      <End Role="T_Category" EntitySet="T_Category" />
+      <End Role="T_Product" EntitySet="T_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_Shippin__Payme__5629CD9C" Association="Self.FK__T_Shippin__Payme__5629CD9C">
+      <End Role="T_Members" EntitySet="T_Members" />
+      <End Role="T_ShippingDetails" EntitySet="T_ShippingDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

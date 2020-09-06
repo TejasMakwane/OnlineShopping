@@ -1,0 +1,222 @@
+﻿
+@using OnlineShoppingStore1.Models.Home
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<title>@ViewBag.Title - My ASP.NET Application</title>*@
+    @*@Styles.Render("~/Content/css")*@
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MyMainLyout.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+   
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+
+
+
+
+
+
+
+<body class="sb-nav-fixed">
+   
+
+  
+   
+
+    
+    <div>
+
+
+        
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6" >
+                <div class="logo">
+                    <h1><a href="#">Online &nbsp;<span>Shopping Store</span></a></h1>
+               
+                </div>
+            </div>
+
+            <div class="row">
+               
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    
+                    <div class="account" style="padding-right:20px">
+                        
+                        <ul>
+
+                            <li>
+                                
+                                
+                                
+                                <div class="visible-xs">
+                                   
+                                   
+                                    
+                                </div>   
+
+
+                               
+                            </li>
+                            <li>
+                                <div class="pull-right">
+
+                                    <img src="~/LoginCSS/user.jpg" class="img-circle" style="width:50px" />
+                                    <h3>@Session["name"]</h3>
+
+
+                                </div>
+                            </li>
+                           
+
+                        </ul>
+                    </div>
+               
+                   
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><b>LOG</b><b class="caret"></b></a>
+
+
+                            <ul class="dropdown-menu">
+
+                             
+                                <li><a href="">Setting</a></li>
+                                <li>  @Html.ActionLink("Change Password", "ChangePassword", new { memberId = Session["uid"] })</li>
+                                
+                               
+                                <li><a href="~/Home/Logout">Logout</a></li>
+
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+                 
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><b>CART</b><b class="caret"></b></a>
+                               
+                             
+                                <ul class="dropdown-menu">
+
+                                    @*item is class name*@
+
+                                    @*@if (Session["cart"] != null)
+                                    {
+                                        foreach (var let in (List<item>)Session["cart"])
+                                        {
+                                            <li><a href="@Url.Action("RemoveToCart", "Home", new { productId= let.Product.ProductId })">@let.Product.ProductName (@let.Quantity) <i class="fa fa-times"></i></a>  
+                                    
+                                    </li>
+                                        }
+                                    }*@
+
+                                    <li class="driver"></li>
+                                    
+                                    <li><a href="~/Home/OrderHistory">Order History</a></li>
+                                    <li><a href="~/Home/Checkout">Checkout</a></li>
+              
+                                </ul>
+
+                            </li>
+
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="~/Home/Index"><b>Home</b></a>
+
+                        </li>
+
+                    </ul>
+
+
+                  
+
+
+
+
+                </div>
+                </div>
+
+
+                @*<div class="row">
+                    <div class="col-md-12">
+                        <div class="nav-menus">
+
+                            <ul class="nav nav-pills">
+                                <li class="active" ><a style="border-radius:initial" href="#">Home</a></li>
+                                <li ><a style="border-radius:initial" href="#">Location</a></li>
+                                <li ><a style="border-radius:initial" href="#">About Us</a></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>*@
+
+         
+        @RenderBody()
+        <hr />
+         
+        <footer>
+            <div class="row">
+
+                <div class="col-md-12 copyright">
+
+                    <div class="col-md-6 col-sm-6 copyright-left">
+                        <p>&copy; @DateTime.Now.Year - <b>Online Shopping Store. All right reserved</b></p>
+                    </div>
+
+
+                    <div class="col-md-6 col-sm-6 copyright-right">
+                     <ul class="list-unstyled list-social">
+                         <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                         <li><a href="#" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+                         <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                     
+                        
+
+                     </ul>
+                    </div>
+                </div>
+                   
+
+
+
+                
+            </div>
+           
+        </footer>
+    </div>
+
+</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="~/AdminStyle/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="~/AdminStyle/assets/demo/chart-area-demo.js"></script>
+<script src="~/AdminStyle/assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="~/AdminStyle/assets/demo/datatables-demo.js"></script>

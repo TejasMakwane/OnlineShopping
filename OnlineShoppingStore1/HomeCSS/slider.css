@@ -1,0 +1,12 @@
+﻿.carousel-item {
+    height: 50vh;
+    
+    background:center center scroll;
+    
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+

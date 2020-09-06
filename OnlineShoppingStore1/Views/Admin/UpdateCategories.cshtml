@@ -1,0 +1,41 @@
+﻿@model OnlineShoppingStore1.Models.CategoryDetails
+@{
+    ViewBag.Title = "UpdateCategories";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*CategoryDetails this for  CategoryDetails class Name ahe copy kela i*@
+
+
+<div class="container-fluid">
+    <h1 class="mt-4">Category</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Categories</li>
+           <li class="breadcrumb-item active">Add NewCategories</li>
+
+    </ol>
+   
+    <div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i>Add New Categories    </div>
+        <div class="card-body">
+            @using (Html.BeginForm("UpdateCategories", "Admin", FormMethod.Post, new { enctype = "multi/form-data" }))
+            {
+            @Html.HiddenFor(m => m.CategoryId)
+
+            <div class="form-group">
+                <label class="control-label">Category Name</label>
+
+                @Html.TextAreaFor(m => m.CategoryName, new { @class = "form-control", placeholder = "Enter Category Name", required = "required", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+            </div>
+
+
+            <input type="submit" class="btn btn-primary" value="Save"/>
+            <a onclick="window.history.back();" class="btn btn-danger">Cancel</a>
+            }
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+
+@*<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Ice-Cream", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "", "")</li>
+                    <li>@Html.ActionLink("Free Recipe", "flavors", "RegisterUser")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "RegisterUser")</li>
+                    <li>@Html.ActionLink("About Us", "", "")</li>
+                    <li>@Html.ActionLink("Adding Recipe", "", "")</li>
+
+                    <li>@Html.ActionLink("Order The Book", "", "")</li>
+                    @if (Session["uid"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "RegisterUser")</li>
+                            <li>@Html.ActionLink("Register", "Register", "RegisterUser")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "RegisterUser")</li>
+                            <li>@Html.ActionLink("User DashBoard", "UserDashBoard", "RegisterUser")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+       
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>*@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/AdminStyle/css/styles.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+
+</head>
+
+
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+   
+        <a href="~/Home">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="button">My Online Shop</button>
+
+        </a>
+
+ 
+        <a href="~/Home/Message">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button">Contact Us</button>
+
+        </a>
+
+
+        
+        <a href="~/Home/About">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button">About Us</button>
+
+        </a>
+
+
+
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+
+
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Home/Login">Login</a>
+                        <a class="dropdown-item" href="~/Home/Register">Register</a>
+                    </div>
+                </li>
+
+
+               
+            </ul>
+</nav>
+    @RenderBody()
+
+
+</body>
+</html>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="~/adminstyle/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/2.8.0/chart.min.js" crossorigin="anonymous"></script>
+<script src="~/adminstyle/assets/demo/chart-area-demo.js"></script>
+<script src="~/adminstyle/assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.datatables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/datatables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="~/adminstyle/assets/demo/datatables-demo.js"></script>
